@@ -1,4 +1,10 @@
+# Fronend 
 */node_modules/
+*/package-lock.json
+
+# Backend
 */venv/
 *.pyc
+
+# IDE
 .vscode
