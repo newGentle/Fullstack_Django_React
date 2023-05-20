@@ -5,7 +5,7 @@
 # Backend
 */venv/
 *.pyc
-*.env
 
 # IDE
 .vscode
+Backend/menu_api/.env
