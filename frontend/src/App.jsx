@@ -6,7 +6,7 @@ import { Receipt } from "./components/Receipt/Receipt";
 import { Route, Routes } from "react-router-dom";
 import { Foods } from "./components/Foods/Foods";
 import { FoodDetail } from "./components/FoodDetail/FoodDetail";
-import { fetchReceipts } from "./Store/slicer";
+import { fetchReceipts } from "./Store/Slicer";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {

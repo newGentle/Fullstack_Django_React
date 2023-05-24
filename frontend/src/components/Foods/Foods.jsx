@@ -1,11 +1,12 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchAReceipt } from "../../Store/slicer";
+import { fetchAReceipt } from "../../Store/Slicer";
 import { Link } from "react-router-dom";
 import styles from "./Foods.module.css";
 import { useParams } from "react-router-dom";
 
+// TODO repair url
 const Foods = () => {
     
     const oneData = useSelector((state) => state.receipt.oneReceipt);
@@ -15,7 +16,7 @@ const Foods = () => {
 
     React.useEffect(() => {
         dispatch(fetchAReceipt(receiptListId.receipt_id));
-    },[dispatch]);
+    },[dispatch, receiptListId.receipt_id]);
     
     console.log(item_status)
     if (item_status === 'Loading...') {

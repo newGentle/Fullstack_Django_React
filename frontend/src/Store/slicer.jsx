@@ -11,11 +11,23 @@ export const fetchReceipts = createAsyncThunk(
     }
 );
 
+// TODO RENAME AND SPLIT TO ANOTHER SLICER
 export const fetchAReceipt = createAsyncThunk(
     "receipt/fetchAReceipt",
     async (id) => {
         const response = await axios.get(
             `http://127.0.0.1:8000/api/v1/receipt/${id}/foods/?format=json`
+        );
+        return response.data;
+    }
+);
+
+// TODO RENAME AND SPLIT TO ANOTHER SLICER
+export const fetchOneReceipt = createAsyncThunk(
+    "receipt/fetchOneReceipt",
+    async (category_id, receipt_id) => {
+        const response = await axios.get(
+            `http://127.0.0.1:8000/api/v1/receipt/${category_id}/foods/${receipt_id}?format=json`
         );
         return response.data;
     }

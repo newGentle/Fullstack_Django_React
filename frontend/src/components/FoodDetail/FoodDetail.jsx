@@ -5,7 +5,7 @@ const FoodDetail = () => {
 
     return (
         <>
-            hello
+            hello //FIXME
         </>
     );
 };
