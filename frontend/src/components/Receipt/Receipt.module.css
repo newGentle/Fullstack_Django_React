@@ -1,0 +1,11 @@
+.receipt {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    row-gap: 30px;
+    
+}
+

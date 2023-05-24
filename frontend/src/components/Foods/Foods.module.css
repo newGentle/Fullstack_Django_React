@@ -1,0 +1,29 @@
+.button {
+    display: flex;
+    min-width: 350px;
+    width: 500px;
+    min-height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #131313;
+    padding: 15px;
+    border-radius: 10px;
+    gap: 55px;
+    text-decoration: none;
+}
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #131313;
+    margin-bottom: 20px;
+}
+
+.button:hover {
+    background-color: #a3f3f3;
+}
+
+.img {
+    width: 120px;
+    height: 80px;
+}

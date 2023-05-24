@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Food(models.Model):
-    name = models.CharField(max_length=32, verbose_name='Название')
+    name = models.CharField(max_length=64, verbose_name='Название')
+    slug = models.SlugField(max_length=64, verbose_name='Slug')
     description = models.TextField(verbose_name='Описание')
     photo = models.ImageField(verbose_name='фото', upload_to='menu_img', default='default.png')
-    price = models.FloatField(verbose_name='цена')
     category = models.ForeignKey("Category", verbose_name="Категория", related_name='cat' , on_delete=models.CASCADE)
     
     class Meta:
@@ -19,6 +19,7 @@ class Food(models.Model):
 class Category(models.Model):
 
     name = models.CharField(max_length=32, verbose_name='Название')
+    slug = models.SlugField(max_length=32, verbose_name='Slug')
     
     
     class Meta:

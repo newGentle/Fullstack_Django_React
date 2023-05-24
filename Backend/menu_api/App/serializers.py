@@ -1,16 +1,18 @@
-from rest_framework import serializers
+from rest_framework_nested.relations import NestedHyperlinkedRelatedField
+from rest_framework.serializers import ModelSerializer, StringRelatedField
 from .models import *
 
 
-class CategoriesSerializer(serializers.ModelSerializer):
+class ReceiptSerializer(ModelSerializer):
     
     class Meta:
         model = Category
         fields = ('__all__')
 
 
-class FoodsSerializer(serializers.ModelSerializer):
+class FoodsSerializer(ModelSerializer):
+    category = StringRelatedField(many=False)
     
     class Meta:
         model = Food
-        fields = ('__all__')
+        fields = ['id', 'name', 'photo', 'slug', 'description', 'category', 'category_id']
