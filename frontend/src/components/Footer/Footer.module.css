@@ -1,0 +1,20 @@
+.footer {
+    margin-top: 50px;
+    background-color: #161616;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.social_links {
+    font-size: 30px;
+    color: aliceblue;
+    margin: 0 15px;
+}
+
+.phantom {
+    height: 160px;
+}

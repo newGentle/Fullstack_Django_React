@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import Slicer from './Slicer'
+import AllCategorySlicer from './Slicers/AllCategorySlicer';
+import CategorySlicer from './Slicers/CategorySlicer';
+import FoodSlicer from './Slicers/FoodSlicer';
 
 export default configureStore({
     reducer: {
-        receipt: Slicer,
-        // TODO add other reducers
+        categories: AllCategorySlicer,
+        category: CategorySlicer,
+        food: FoodSlicer
     },
 
 })
