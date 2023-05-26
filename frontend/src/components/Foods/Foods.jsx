@@ -17,8 +17,18 @@ const Foods = () => {
     }, [dispatch, categoryId.receipt_id]);
 
     if (status === "loading") {
-        return "Loading...";
+        return "Загрузка...";
     }
+
+    if (error) {
+        return (
+            <>
+                <h2>Сервер не доступен или страница не существует</h2>
+                <Button onClick={() => navigate(-1)}>Назад</Button>
+            </>
+        );
+    }
+
     const name = oneData.length !== 0 ? oneData[0].category : "Категория пуста";
     return (
         <>

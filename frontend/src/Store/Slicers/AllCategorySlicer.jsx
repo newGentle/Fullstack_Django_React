@@ -7,6 +7,7 @@ export const fetchAllCategories = createAsyncThunk(
         const response = await axios.get(
             "http://127.0.0.1:8000/api/v1/receipt/?format=json"
         );
+        
         return response.data;
     }
 );
@@ -21,19 +22,21 @@ const AllCategoriesSlicer = createSlice({
     name: "categories",
     initialState,
 
-    extraReducers: {
-        [fetchAllCategories.fulfilled]: (state, action) => {
+    extraReducers: (builder) => {
+        builder.addCase(fetchAllCategories.fulfilled, (state, action) => {
             state.categories = action.payload;
             state.status = 'resolved';
-        },
-        [fetchAllCategories.pending]: (state, action) => {
-            state.status = 'Loading...';
+        })
+
+        builder.addCase(fetchAllCategories.pending, (state) => {
+            state.status = 'loading';
             state.error = null;
-        },
+        })
 
-
-        
-
+        builder.addCase(fetchAllCategories.rejected, (state, action) => {
+            state.status = 'rejected';
+            state.error = action.error.message;
+        })
     },
 });
 

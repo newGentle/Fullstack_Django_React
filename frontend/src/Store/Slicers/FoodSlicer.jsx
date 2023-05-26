@@ -4,10 +4,13 @@ import axios from "axios";
 export const fetchFood = createAsyncThunk(
     "food/fetchFood",
     async (values) => {
-        const response = await axios.get(
-            `http://127.0.0.1:8000/api/v1/receipt/${values.receipt_id}/foods/${values.id}?format=json`
-        );
-        return response.data;
+        
+            const response = await axios.get(
+                `http://127.0.0.1:8000/api/v1/receipt/${values.receipt_id}/foods/${values.id}?format=json`
+            );
+        
+            return response.data;
+        
     }
 );
 
@@ -21,23 +24,22 @@ const initialState = {
 const FoodSlicer = createSlice({
     name: "food",
     initialState,
-    reducers: {
-
-    },
-    extraReducers: {
-        [fetchFood.fulfilled]: (state, action) => {
+ 
+    extraReducers: (builder) => {
+        builder.addCase(fetchFood.fulfilled, (state, action) => {
             state.food = action.payload;
             state.status = 'resolved';
-        },
-        [fetchFood.pending]: (state, action) => {
+        })
+
+        builder.addCase(fetchFood.pending, (state) => {
             state.status = 'loading';
             state.error = null;
-        },
-        [fetchFood.rejected]: (state, action) => {
+        })
+
+        builder.addCase(fetchFood.rejected, (state, action) => {
             state.status = 'rejected';
-            state.error = action.payload;
-            
-        },
+            state.error = action.error.message;
+        })
     },
 });
 export default FoodSlicer.reducer;

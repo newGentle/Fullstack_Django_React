@@ -21,20 +21,21 @@ const CategorySlicer = createSlice({
     name: "category",
     initialState,
 
-    extraReducers: {
-        [fetchCategory.fulfilled]: (state, action) => {
+    extraReducers: (builder) => {
+        builder.addCase(fetchCategory.fulfilled, (state, action) => {
             state.category = action.payload;
             state.status = 'resolved';
-        },
-        [fetchCategory.pending]: (state, action) => {
+        })
+
+        builder.addCase(fetchCategory.pending, (state) => {
             state.status = 'loading';
             state.error = null;
-        },
-        [fetchCategory.rejected]: (state, action) => {
+        })
+
+        builder.addCase(fetchCategory.rejected, (state, action) => {
             state.status = 'rejected';
-            state.error = action.payload;
-            
-        },
+            state.error = action.error.message;
+        })
     },
 });
 
